@@ -25,9 +25,12 @@ function attachListButtons(li) {
     li.appendChild(remove);
 }
 
-/* This function takes a collection of li elements
+/* 
+This function takes a collection of li elements
 (ul children) and removes the up button of the top-most
-li and the down button of the bottom-most li. */
+li and the down button of the bottom-most li. 
+It works.
+*/
 function correctTopAndBottomButtons(ulChildren){
     for (let i = 0; i < ulChildren.length; i++){
         if (i === 0){
@@ -41,10 +44,12 @@ function correctTopAndBottomButtons(ulChildren){
     }
 }
 
+
 /* When displaying the page for the first time 
         1 - Adds all buttons to the li collection.
         2 - Removes the up button for the top li and
         the down button of the bottom li.
+    It works.
 */
 
 // 1
@@ -54,7 +59,8 @@ for (let i = 0; i < li.length; i++){
 //2
 correctTopAndBottomButtons(li);
 
-/* In these next for loops, I wish to remove all buttons 
+/* HERE IS THE PROBLEM!!!
+In these next for loops, I wish to remove all buttons 
 for all li elements, but it's not working.
 The webpage still displays the respective li buttons.
 */
@@ -83,43 +89,43 @@ function addBackgroundColorToTopAndBottom(ulChildren){
 addBackgroundColorToTopAndBottom(li);
 
 
-listUl.addEventListener('click', (event) => {
-    if (event.target.tagName == 'BUTTON') {
-        if (event.target.className == 'up') {
-            let li = event.target.parentNode;
-            let prevLi = li.previousElementSibling;
-            let ul = li.parentNode;
+// listUl.addEventListener('click', (event) => {
+//     if (event.target.tagName == 'BUTTON') {
+//         if (event.target.className == 'up') {
+//             let li = event.target.parentNode;
+//             let prevLi = li.previousElementSibling;
+//             let ul = li.parentNode;
             
-            if (prevLi) {
-                ul.insertBefore(li, prevLi);
-            }
-        }
-        if (event.target.className == 'down') {
-            let li = event.target.parentNode;
-            let nextLi = li.nextElementSibling;
-            let ul = li.parentNode;
+//             if (prevLi) {
+//                 ul.insertBefore(li, prevLi);
+//             }
+//         }
+//         if (event.target.className == 'down') {
+//             let li = event.target.parentNode;
+//             let nextLi = li.nextElementSibling;
+//             let ul = li.parentNode;
             
-            if (nextLi) {
-                ul.insertBefore(nextLi, li);
-            }
-        }
-        if (event.target.className == 'remove') {
-            let li = event.target.parentNode;
-            let ul = li.parentNode;
-            ul.removeChild(li);
-        }
-    }
+//             if (nextLi) {
+//                 ul.insertBefore(nextLi, li);
+//             }
+//         }
+//         if (event.target.className == 'remove') {
+//             let li = event.target.parentNode;
+//             let ul = li.parentNode;
+//             ul.removeChild(li);
+//         }
+//     }
     
-    addBackgroundColorToTopAndBottom(li);
-});
+//     addBackgroundColorToTopAndBottom(li);
+// });
 
 
-addItemButton.addEventListener('click', () => {
-    let li = document.createElement('li');
-    li.textContent = addItemInput.value;
-    listUl.appendChild(li);
-    attachListButtons(li);
-    addBackgroundColorToTopAndBottom(listUl.children);
-    addItemInput.value = '';
-});
+// addItemButton.addEventListener('click', () => {
+//     let li = document.createElement('li');
+//     li.textContent = addItemInput.value;
+//     listUl.appendChild(li);
+//     attachListButtons(li);
+//     addBackgroundColorToTopAndBottom(listUl.children);
+//     addItemInput.value = '';
+// });
 
